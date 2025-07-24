@@ -1,0 +1,2291 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="“这里是我的学习笔记”">
+      
+      
+        <meta name="author" content="“wyzs”">
+      
+      
+        <link rel="canonical" href="https://yjw-000.github.io/NoteStack/math/linear-algebra/determinant/">
+      
+      
+        <link rel="prev" href="../../calculus/first/">
+      
+      
+        <link rel="next" href="../../PTMS/first/">
+      
+      
+      <link rel="icon" href="../../../logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>第一章 - 我的笔记网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第一章-行列式笔记整理" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="不再显示此消息">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+
+
+欢迎！
+
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="页眉">
+        <label class="md-header__button md-icon" for="__drawer">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+        </label>
+        <div class="md-header__title" data-md-component="header-title">
+            <div class="md-header__ellipsis">
+                <div class="md-header__topic">
+                    <span class="md-ellipsis">
+                        我的笔记网站
+                    </span>
+                </div>
+                <div class="md-header__topic" data-md-component="header-topic">
+                    <span class="md-ellipsis">
+                        
+                        第一章
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至明亮主题"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至明亮主题" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07zm-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13zm-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87zM19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35zm4.33-2.7 1.15-2.77 2.2 2.54zm1.15-4.96-1.14-2.78 3.34.24zM9.63 18.93l2.77 1.15-2.53 2.19z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="切换至暗黑主题"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至暗黑主题" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换至系统主题"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="切换至系统主题" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+        
+        
+        
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+        
+        
+        
+        <label class="md-header__button md-icon" for="__search">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
+        <div class="md-header__source">
+            <a href="https://github.com/yjw-000/NoteStack/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yjw-000/NoteStack
+  </div>
+</a>
+        </div>
+        
+    </nav>
+    
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../notes/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  学习笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于我
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="我的笔记网站" class="md-nav__button md-logo" aria-label="我的笔记网站" data-md-component="logo">
+      
+  <img src="../../../logo.png" alt="logo">
+
+    </a>
+    我的笔记网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yjw-000/NoteStack/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yjw-000/NoteStack
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    学习笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            学习笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    笔记概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数学相关
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            数学相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    高数
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            高数
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../calculus/first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    线代
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            线代
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#第一章-行列式笔记整理" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一章 行列式笔记整理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一章 行列式笔记整理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#一行列式的本质定义几何意义" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、行列式的本质定义（几何意义）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3阶行列式" class="md-nav__link">
+    <span class="md-ellipsis">
+      3阶行列式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#二行列式的七大性质" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、行列式的七大性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#三逆序数法定义抽象定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、逆序数法定义（抽象定义）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#四展开定理计算核心" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、展开定理（计算核心）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#五重要行列式121型" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、重要行列式（&rdquo;12+1型&rdquo;）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#六具体型行列式的计算方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、具体型行列式的计算方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、具体型行列式的计算方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-化为基本形高频考点" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 化为基本形（高频考点）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-递推法规律性行列式" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 递推法（规律性行列式）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-行列式表示的函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 行列式表示的函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#七抽象型行列式的计算" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、抽象型行列式的计算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#八余子式与代数余子式的组合" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、余子式与代数余子式的组合
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#九克拉默法则方程组应用" class="md-nav__link">
+    <span class="md-ellipsis">
+      九、克拉默法则（方程组应用）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="九、克拉默法则（方程组应用）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#重点例题总结8个核心题" class="md-nav__link">
+    <span class="md-ellipsis">
+      重点例题总结（8个核心题）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="重点例题总结（8个核心题）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#例11" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例12" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例14" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例16" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例17" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.7
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例110" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.10
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例112" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.12
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例113" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.13
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    概率论与数理统计
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            概率论与数理统计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PTMS/first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    算法相关
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            算法相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1" id="__nav_2_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据结构
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            数据结构
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithm/data-structure/first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    系统相关
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            系统相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4_1" id="__nav_2_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机组成
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机组成
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer-systems/computer-organization/first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4_2" id="__nav_2_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    操作系统
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            操作系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer-systems/operating-system/first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer-systems/computer-network/first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于我
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#第一章-行列式笔记整理" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一章 行列式笔记整理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一章 行列式笔记整理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#一行列式的本质定义几何意义" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、行列式的本质定义（几何意义）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3阶行列式" class="md-nav__link">
+    <span class="md-ellipsis">
+      3阶行列式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#二行列式的七大性质" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、行列式的七大性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#三逆序数法定义抽象定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、逆序数法定义（抽象定义）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#四展开定理计算核心" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、展开定理（计算核心）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#五重要行列式121型" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、重要行列式（&rdquo;12+1型&rdquo;）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#六具体型行列式的计算方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、具体型行列式的计算方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、具体型行列式的计算方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-化为基本形高频考点" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 化为基本形（高频考点）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-递推法规律性行列式" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 递推法（规律性行列式）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-行列式表示的函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 行列式表示的函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#七抽象型行列式的计算" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、抽象型行列式的计算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#八余子式与代数余子式的组合" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、余子式与代数余子式的组合
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#九克拉默法则方程组应用" class="md-nav__link">
+    <span class="md-ellipsis">
+      九、克拉默法则（方程组应用）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="九、克拉默法则（方程组应用）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#重点例题总结8个核心题" class="md-nav__link">
+    <span class="md-ellipsis">
+      重点例题总结（8个核心题）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="重点例题总结（8个核心题）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#例11" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例12" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例14" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例16" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例17" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.7
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例110" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.10
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例112" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.12
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例113" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1.13
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+    <a href="javascript:void(window.print());" class="md-content__button md-icon" title="下载此页">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V8zm-2 17-4-4h2.5v-3h3v3H16zm1-10V3.5L18.5 9z"/></svg>
+    </a>
+
+
+
+                  
+
+
+  
+    <a href="https://github.com/yjw-000/NoteStack/edit/main/docs/math/linear-algebra/determinant.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/yjw-000/NoteStack/raw/main/docs/math/linear-algebra/determinant.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+  <h1>第一章</h1>
+
+<h2 id="第一章-行列式笔记整理">第一章 行列式笔记整理<a class="headerlink" href="#第一章-行列式笔记整理" title="点击定位到锚点">#</a></h2>
+<h3 id="一行列式的本质定义几何意义">一、行列式的本质定义（几何意义）<a class="headerlink" href="#一行列式的本质定义几何意义" title="点击定位到锚点">#</a></h3>
+<p><strong>核心概念</strong>：行列式表示由行向量构成的几何体的&rdquo;体积&rdquo;。  </p>
+<ol>
+<li><strong>2阶行列式</strong>：  </li>
+</ol>
+<div class="arithmatex">\[
+   D_2 = 
+\begin{vmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{vmatrix}
+= a_{11}a_{22} - a_{12}a_{21}
+\]</div>
+<p><strong>几何意义</strong>：以行向量<span class="arithmatex">\(\alpha_1 = [a_{11}, a_{12}]\)</span>和 <span class="arithmatex">\(\alpha_2 = [a_{21}, a_{22}]\)</span> 为邻边的**平行四边形面积**（图1-1）。  </p>
+<blockquote>
+<p><strong>推导</strong>：设向量夹角为 <span class="arithmatex">\(\beta - \alpha\)</span>，则面积 <span class="arithmatex">\(S = l \cdot m \cdot \sin(\beta - \alpha) = a_{11}a_{22} - a_{12}a_{21}\)</span>。</p>
+</blockquote>
+<ol start="2">
+<li><strong>3阶行列式</strong></li>
+</ol>
+<h3 id="3阶行列式">3阶行列式<a class="headerlink" href="#3阶行列式" title="点击定位到锚点">#</a></h3>
+<div class="arithmatex">\[
+D_3 =
+\begin{vmatrix} 
+a_{11} &amp; a_{12} &amp; a_{13} \\ 
+a_{21} &amp; a_{22} &amp; a_{23} \\
+a_{31} &amp; a_{32} &amp; a_{33} 
+\end{vmatrix}
+\]</div>
+<p><strong>几何意义</strong>：以三个行向量为邻边的**平行六面体体积**（图1-2）。</p>
+<ol start="3">
+<li><strong>n阶推广</strong>：<br />
+<span class="arithmatex">\(D_n\)</span> 是以 <span class="arithmatex">\(n\)</span> 个 <span class="arithmatex">\(n\)</span> 维行向量为邻边的 <strong><span class="arithmatex">\(n\)</span> 维体积</strong>。<br />
+<strong>核心结论</strong>：  </li>
+</ol>
+<ul>
+<li><span class="arithmatex">\(D_n \neq 0\)</span> ⇒ 向量线性无关（体积非零）  </li>
+<li><span class="arithmatex">\(D_n = 0\)</span> ⇒ 向量线性相关（体积塌陷）  </li>
+</ul>
+<hr />
+<h3 id="二行列式的七大性质">二、行列式的七大性质<a class="headerlink" href="#二行列式的七大性质" title="点击定位到锚点">#</a></h3>
+<p>所有性质均可由几何意义直观推导：  </p>
+<table>
+<thead>
+<tr>
+<th><strong>性质</strong></th>
+<th><strong>公式</strong></th>
+<th><strong>操作名称</strong></th>
+<th><strong>几何解释</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 行列转置不变</td>
+<td><span class="arithmatex">\(\|A\| = \|A^T\|\)</span></td>
+<td>-</td>
+<td>体积不变</td>
+</tr>
+<tr>
+<td>2. 全零行/列为零</td>
+<td>某行/列全为0 ⇒ <span class="arithmatex">\(\|A\|=0\)</span></td>
+<td>-</td>
+<td>向量共面（退化）</td>
+</tr>
+<tr>
+<td>3. 公因子外提</td>
+<td>某行/列乘 <span class="arithmatex">\(k\)</span> ⇒ <span class="arithmatex">\(\|A\|\)</span> 乘 <span class="arithmatex">\(k\)</span></td>
+<td>倍乘</td>
+<td>体积缩放 <span class="arithmatex">\(k\)</span> 倍</td>
+</tr>
+<tr>
+<td>4. 行/列可拆分</td>
+<td>某行/列为和式 ⇒ 拆分为两个行列式之和</td>
+<td>加法</td>
+<td>体积叠加</td>
+</tr>
+<tr>
+<td>5. 两行/列互换变号</td>
+<td>互换两行/列 ⇒ <span class="arithmatex">\(\|A\|\)</span> 变号</td>
+<td>互换</td>
+<td>定向反转（右手系变左手系）</td>
+</tr>
+<tr>
+<td>6. 行/列成比例为零</td>
+<td>两行/列元素相等或成比例 ⇒ <span class="arithmatex">\(\|A\|=0\)</span></td>
+<td>-</td>
+<td>向量平行（体积为零）</td>
+</tr>
+<tr>
+<td>7. 倍加不变</td>
+<td>某行 <span class="arithmatex">\(k\)</span> 倍加到另一行 ⇒ <span class="arithmatex">\(\|A\|\)</span> 不变</td>
+<td>倍加</td>
+<td>剪切变换（体积不变）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>重难点</strong>：性质3、4、7是化简核心；性质6是判断线性相关的重要工具。</p>
+</blockquote>
+<hr />
+<h3 id="三逆序数法定义抽象定义">三、逆序数法定义（抽象定义）<a class="headerlink" href="#三逆序数法定义抽象定义" title="点击定位到锚点">#</a></h3>
+<p><strong>核心概念</strong>：通过排列的奇偶性确定符号。  </p>
+<ol>
+<li>
+<p><strong>逆序数 <span class="arithmatex">\(\tau\)</span></strong>：<br />
+   - 排列中逆序对的总数（如 <span class="arithmatex">\(\tau(231546) = 3\)</span>）。<br />
+   - <span class="arithmatex">\(\tau\)</span> 奇 ⇒ 奇排列；<span class="arithmatex">\(\tau\)</span> 偶 ⇒ 偶排列。  </p>
+</li>
+<li>
+<p><strong>n阶行列式公式</strong>：<br />
+   [
+   D = sum_{j_1 j_2 cdots j_n} (-1)^{tau(j_1 j_2 cdots j_n)} a_{1j_1} a_{2j_2} cdots a_{nj_n}
+   ]
+   <strong>含义</strong>：对所有列排列求和，奇排列项取负号。  </p>
+</li>
+</ol>
+<blockquote>
+<p><strong>示例</strong>：项 <span class="arithmatex">\(a_{12}a_{23}a_{34}a_{45}\)</span> 的行下标排序为25134，<span class="arithmatex">\(\tau=4\)</span>（偶）⇒ 符号为正。<br />
+<strong>注</strong>：适用于理论推导，高阶计算不便。</p>
+</blockquote>
+<hr />
+<h3 id="四展开定理计算核心">四、展开定理（计算核心）<a class="headerlink" href="#四展开定理计算核心" title="点击定位到锚点">#</a></h3>
+<p><strong>核心概念</strong>：通过余子式降阶计算。  </p>
+<ol>
+<li><strong>余子式 <span class="arithmatex">\(M_{ij}\)</span></strong>：<br />
+   删除第 <span class="arithmatex">\(i\)</span> 行第 <span class="arithmatex">\(j\)</span> 列后的 <span class="arithmatex">\(n-1\)</span> 阶行列式。  </li>
+<li><strong>代数余子式 <span class="arithmatex">\(A_{ij}\)</span></strong>：<br />
+   [
+   A_{ij} = (-1)^{i+j} M_{ij}
+   ]</li>
+<li><strong>展开公式</strong>：  </li>
+</ol>
+<ul>
+<li><strong>正确展开</strong>：<span class="arithmatex">\(\|A\| = \sum_{k=1}^n a_{ik} A_{ik}\)</span>（按第 <span class="arithmatex">\(i\)</span> 行）  </li>
+<li><strong>错误展开</strong>：<span class="arithmatex">\(\sum_{k=1}^n a_{ik} A_{jk} = 0 \ (i \neq j)\)</span>（异行展开为零）  </li>
+</ul>
+<blockquote>
+<p><strong>重难点</strong>：优先选择0元素多的行/列展开简化计算（见例1.1）。<br />
+<strong>例1.1</strong>（重点例题）：<br />
+[
+D_4 = begin{vmatrix} 2 &amp; -1 &amp; 0 &amp; 0 \ 0 &amp; 2 &amp; -1 &amp; 0 \ 0 &amp; 0 &amp; 2 &amp; -1 \ -1 &amp; 0 &amp; 0 &amp; 2 end{vmatrix} = 15
+]
+<strong>解法</strong>：按第1列展开 → 化为3阶行列式 → 递归计算。</p>
+</blockquote>
+<hr />
+<h3 id="五重要行列式121型">五、重要行列式（&rdquo;12+1型&rdquo;）<a class="headerlink" href="#五重要行列式121型" title="点击定位到锚点">#</a></h3>
+<p>直接套用公式加速计算：  </p>
+<table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>公式</strong></th>
+<th><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主对角线行列式</td>
+<td><span class="arithmatex">\(\prod_{i=1}^n a_{ii}\)</span>（上/下三角）</td>
+<td><span class="arithmatex">\(\begin{vmatrix} 2 &amp; 0 \\ 0 &amp; 3 \end{vmatrix} = 6\)</span></td>
+</tr>
+<tr>
+<td>副对角线行列式</td>
+<td><span class="arithmatex">\((-1)^{\frac{n(n-1)}{2}} a_{1n} a_{2,n-1} \cdots a_{n1}\)</span></td>
+<td>3阶副对角线：<span class="arithmatex">\(-a_{13}a_{22}a_{31}\)</span></td>
+</tr>
+<tr>
+<td>分块矩阵（拉普拉斯）</td>
+<td><span class="arithmatex">\(\begin{vmatrix} A &amp; C \\ O &amp; B \end{vmatrix} = \|A\|\|B\|\)</span></td>
+<td>12种分块形式</td>
+</tr>
+<tr>
+<td>范德蒙德行列式</td>
+<td><span class="arithmatex">\(\prod_{1 \leq i &lt; j \leq n} (x_j - x_i)\)</span></td>
+<td><span class="arithmatex">\(\begin{vmatrix} 1 &amp; 1 \\ x_1 &amp; x_2 \end{vmatrix} = x_2 - x_1\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="六具体型行列式的计算方法">六、具体型行列式的计算方法<a class="headerlink" href="#六具体型行列式的计算方法" title="点击定位到锚点">#</a></h3>
+<h4 id="1-化为基本形高频考点">1. 化为基本形（高频考点）<a class="headerlink" href="#1-化为基本形高频考点" title="点击定位到锚点">#</a></h4>
+<p><strong>步骤</strong>：初等变换 → 上/下三角行列式 → 对角线乘积。<br />
+<strong>例1.2</strong>（爪形行列式）：<br />
+[
+D = begin{vmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \ 1 &amp; 2 &amp; 0 &amp; 0 \ 1 &amp; 0 &amp; 3 &amp; 0 \ 1 &amp; 0 &amp; 0 &amp; 4 end{vmatrix} = -2
+]
+<strong>解法</strong>：第1列的 <span class="arithmatex">\((-1)\)</span> 倍加到各列 → 上三角 → <span class="arithmatex">\(1 \times 1 \times 3 \times 4 \times \left(1 - \frac{1}{2} - \frac{1}{3} - \frac{1}{4}\right)\)</span>。</p>
+<h4 id="2-递推法规律性行列式">2. 递推法（规律性行列式）<a class="headerlink" href="#2-递推法规律性行列式" title="点击定位到锚点">#</a></h4>
+<p><strong>核心</strong>：建立 <span class="arithmatex">\(D_n\)</span> 与 <span class="arithmatex">\(D_{n-1}\)</span> 的递推关系。<br />
+<strong>例1.7</strong>（重点例题）：<br />
+$$
+D_n = begin{vmatrix} 1-a &amp; a &amp; 0 &amp; 0 \ -1 &amp; 1-a &amp; a &amp; 0 \ 0 &amp; -1 &amp; 1-a &amp; a \ 0 &amp; 0 &amp; -1 &amp; 1-a end{vmatrix}
+$$
+<strong>递推关系</strong>：<br />
+[
+D_n = (1-a)D_{n-1} - a(-1)^{n+1} cdot a cdot D_{n-2}
+]
+<strong>结果</strong>：<span class="arithmatex">\(D_4 = a^4 - a^3 + a^2 - a + 1\)</span>（选项D）。</p>
+<h4 id="3-行列式表示的函数">3. 行列式表示的函数<a class="headerlink" href="#3-行列式表示的函数" title="点击定位到锚点">#</a></h4>
+<p><strong>应用</strong>：求根、求导、积分（例1.8）。<br />
+<strong>例1.9</strong>（重点例题）：<br />
+解<br />
+[
+begin{vmatrix} lambda-1 &amp; -2 &amp; 3 \ 1 &amp; lambda-4 &amp; 3 \ -1 &amp; a &amp; lambda-5 end{vmatrix} = 0
+]
+有二重根 ⇒ <span class="arithmatex">\(a=2\)</span> 或 <span class="arithmatex">\(a=\frac{2}{3}\)</span>。<br />
+<strong>解法</strong>：  </p>
+<ol>
+<li>列变换 → 因式分解：<span class="arithmatex">\((\lambda-2)(\lambda^2 -8\lambda +18-3a)=0\)</span>  </li>
+<li>二重根条件：代入 <span class="arithmatex">\(\lambda=2\)</span> 或判别式 <span class="arithmatex">\(\Delta=0\)</span>。</li>
+</ol>
+<hr />
+<h3 id="七抽象型行列式的计算">七、抽象型行列式的计算<a class="headerlink" href="#七抽象型行列式的计算" title="点击定位到锚点">#</a></h3>
+<p><strong>核心方法</strong>：行列变换 + 分解为已知行列式。<br />
+<strong>例1.10</strong>（重点例题）：<br />
+已知 <span class="arithmatex">\(\| \gamma, \alpha_1, \alpha_2, \alpha_3 \| = n\)</span>，<span class="arithmatex">\(\| \alpha_1, \beta + \gamma, \alpha_2, \alpha_3 \| = m\)</span>，求 <span class="arithmatex">\(\| \alpha_1, \alpha_2, \alpha_3, 3\beta \|\)</span>。<br />
+<strong>解法</strong>：<br />
+[
+| alpha_1, beta + gamma, alpha_2, alpha_3 | = | alpha_1, beta, alpha_2, alpha_3 | + | alpha_1, gamma, alpha_2, alpha_3 | = m
+]
+[
+Rightarrow | alpha_1, alpha_2, alpha_3, 3beta | = 3(m + n)
+]</p>
+<h2 id="八余子式与代数余子式的组合">八、余子式与代数余子式的组合<a class="headerlink" href="#八余子式与代数余子式的组合" title="点击定位到锚点">#</a></h2>
+<p><strong>核心公式</strong>：<br />
+[
+sum_{k=1}^n k_k A_{ik} = begin{vmatrix} a_{11} &amp; cdots &amp; a_{1n} \ vdots &amp; ddots &amp; vdots \ k_1 &amp; cdots &amp; k_n \ vdots &amp; ddots &amp; vdots \ a_{n1} &amp; cdots &amp; a_{nn} end{vmatrix}
+]
+（第 <span class="arithmatex">\(i\)</span> 行替换为系数）  </p>
+<p><strong>例1.12</strong>（重点例题）：<br />
+求 <span class="arithmatex">\(A_{31} + A_{32} + A_{33} + M_{34}\)</span>（其中 <span class="arithmatex">\(M_{34} = -A_{34}\)</span>）。  </p>
+<p><strong>解法</strong>：<br />
+[
+text{组合} = A_{31} + A_{32} + A_{33} - A_{34} = begin{vmatrix} 2 &amp; -1 &amp; 2 &amp; 3 \ 0 &amp; 1 &amp; -1 &amp; 0 \ 1 &amp; 1 &amp; 1 &amp; -1 \ 1 &amp; 1 &amp; 1 &amp; 1 end{vmatrix} = 6
+]</p>
+<hr />
+<h2 id="九克拉默法则方程组应用">九、克拉默法则（方程组应用）<a class="headerlink" href="#九克拉默法则方程组应用" title="点击定位到锚点">#</a></h2>
+<p><strong>核心结论</strong>：  </p>
+<ol>
+<li><strong>非齐次方程组</strong> <span class="arithmatex">\(A\mathbf{x} = \mathbf{b}\)</span>：<br />
+   - <span class="arithmatex">\(\|A\| \neq 0\)</span> ⇒ 唯一解 <span class="arithmatex">\(x_i = \frac{\|A_i\|}{\|A\|}\)</span>（<span class="arithmatex">\(A_i\)</span> 为第 <span class="arithmatex">\(i\)</span> 列替换为 <span class="arithmatex">\(\mathbf{b}\)</span>）。<br />
+   - <span class="arithmatex">\(\|A\| = 0\)</span> ⇒ 无解或无穷解。  </li>
+<li><strong>齐次方程组</strong> <span class="arithmatex">\(A\mathbf{x} = \mathbf{0}\)</span>：<br />
+   - <span class="arithmatex">\(\|A\| \neq 0\)</span> ⇒ 仅有零解；<br />
+   - <span class="arithmatex">\(\|A\| = 0\)</span> ⇒ 有非零解（充要条件）。  </li>
+</ol>
+<p><strong>例1.13</strong>（重点例题）：<br />
+设 <span class="arithmatex">\(B\)</span> 的列向量是方程组<br />
+[
+begin{cases} 
+x_1 + 2x_2 - 2x_3 = 0 \ 
+2x_1 - x_2 + lambda x_3 = 0 \ 
+3x_1 + x_2 - x_3 = 0 
+end{cases}
+]
+的解，且 <span class="arithmatex">\(B \neq 0\)</span>。  </p>
+<p><strong>解法</strong>：  </p>
+<ol>
+<li>有非零解 ⇒<br />
+[
+|A| = begin{vmatrix} 1 &amp; 2 &amp; -2 \ 2 &amp; -1 &amp; lambda \ 3 &amp; 1 &amp; -1 end{vmatrix} = 5(lambda - 1) = 0 Rightarrow lambda = 1.
+]</li>
+<li>反证法证 <span class="arithmatex">\(\|B\| = 0\)</span>：<br />
+   若 <span class="arithmatex">\(\|B\| \neq 0\)</span>，则 <span class="arithmatex">\(B\)</span> 可逆 ⇒ <span class="arithmatex">\(A = O\)</span>，矛盾。</li>
+</ol>
+<h3 id="重点例题总结8个核心题">重点例题总结（8个核心题）<a class="headerlink" href="#重点例题总结8个核心题" title="点击定位到锚点">#</a></h3>
+<hr />
+<h4 id="例11"><strong>例1.1</strong><a class="headerlink" href="#例11" title="点击定位到锚点">#</a></h4>
+<p><strong>题型</strong>：展开定理<br />
+<strong>方法</strong>：按0元素多的列降阶<br />
+<strong>页码</strong>：Page 6<br />
+<strong>原题</strong>：<br />
+计算行列式：<br />
+$$
+begin{vmatrix}
+2 &amp; -1 &amp; 0 &amp; 0 \
+4 &amp; 0 &amp; -1 &amp; 0 \
+0 &amp; 3 &amp; 0 &amp; -1 \
+0 &amp; 0 &amp; 4 &amp; 0
+end{vmatrix}
+$$
+<strong>解</strong>：<br />
+$$
+= 2 cdot (-1)^{1+1} cdot begin{vmatrix}
+0 &amp; -1 &amp; 0 \
+3 &amp; 0 &amp; -1 \
+0 &amp; 4 &amp; 0
+end{vmatrix}
+= 2 cdot left[ 0 cdot begin{vmatrix} 0 &amp; -1 \ 4 &amp; 0 end{vmatrix} - (-1) cdot begin{vmatrix} 3 &amp; -1 \ 0 &amp; 0 end{vmatrix} + 0 cdot begin{vmatrix} 3 &amp; 0 \ 0 &amp; 4 end{vmatrix} right]
+= 2 cdot (0 + 0 + 0) = 0
+$$</p>
+<hr />
+<h4 id="例12"><strong>例1.2</strong><a class="headerlink" href="#例12" title="点击定位到锚点">#</a></h4>
+<p><strong>题型</strong>：爪形行列式<br />
+<strong>方法</strong>：倍加化上三角<br />
+<strong>页码</strong>：Page 7<br />
+<strong>原题</strong>：<br />
+计算行列式：<br />
+$$
+begin{vmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 \
+0 &amp; 2 &amp; 1 &amp; 1 \
+0 &amp; 0 &amp; 3 &amp; 1 \
+0 &amp; 0 &amp; 0 &amp; 4
+end{vmatrix}
+$$
+<strong>解</strong>：<br />
+$$
+= 1 cdot 2 cdot 3 cdot 4 = 24
+$$</p>
+<hr />
+<h4 id="例14"><strong>例1.4</strong><a class="headerlink" href="#例14" title="点击定位到锚点">#</a></h4>
+<p><strong>题型</strong>：n阶字母行列式<br />
+<strong>方法</strong>：每行和相等 ⇒ 提取公因子<br />
+<strong>页码</strong>：Page 8<br />
+<strong>原题</strong>：<br />
+计算n阶行列式：<br />
+$$
+D_n = begin{vmatrix}
+a &amp; b &amp; b &amp; cdots &amp; b \
+b &amp; a &amp; b &amp; cdots &amp; b \
+b &amp; b &amp; a &amp; cdots &amp; b \
+vdots &amp; vdots &amp; vdots &amp; ddots &amp; vdots \
+b &amp; b &amp; b &amp; cdots &amp; a
+end{vmatrix}
+$$
+<strong>解</strong>：<br />
+$$
+D_n = <a href="a - b">a + (n-1)b</a>^{n-1}
+$$</p>
+<hr />
+<h4 id="例16"><strong>例1.6</strong><a class="headerlink" href="#例16" title="点击定位到锚点">#</a></h4>
+<p><strong>题型</strong>：因式分解<br />
+<strong>方法</strong>：倍加+列互换+范德蒙德<br />
+<strong>页码</strong>：Page 10<br />
+<strong>原题</strong>：<br />
+计算行列式：<br />
+$$
+begin{vmatrix}
+1 &amp; 1 &amp; 1 \
+x &amp; y &amp; z \
+x^2 &amp; y^2 &amp; z^2
+end{vmatrix}
+$$
+<strong>解</strong>：<br />
+$$
+= (y - x)(z - x)(z - y)
+$$</p>
+<hr />
+<h4 id="例17"><strong>例1.7</strong><a class="headerlink" href="#例17" title="点击定位到锚点">#</a></h4>
+<p><strong>题型</strong>：递推法<br />
+<strong>方法</strong>：建立 $ D_n $ 与 $ D_{n-1} $ 关系<br />
+<strong>页码</strong>：Page 11<br />
+<strong>原题</strong>：<br />
+计算行列式：<br />
+$$
+D_n = begin{vmatrix}
+1-a &amp; a &amp; 0 &amp; cdots &amp; 0 \
+-1 &amp; 1-a &amp; a &amp; cdots &amp; 0 \
+0 &amp; -1 &amp; 1-a &amp; cdots &amp; 0 \
+vdots &amp; vdots &amp; vdots &amp; ddots &amp; vdots \
+0 &amp; 0 &amp; 0 &amp; cdots &amp; 1-a
+end{vmatrix}
+$$
+<strong>解</strong>：<br />
+$$
+D_n = (1 - a)^n + (-1)^{n-1} a^n
+$$</p>
+<hr />
+<h4 id="例110"><strong>例1.10</strong><a class="headerlink" href="#例110" title="点击定位到锚点">#</a></h4>
+<p><strong>题型</strong>：抽象行列式计算<br />
+<strong>方法</strong>：拆分已知行列式<br />
+<strong>页码</strong>：Page 13<br />
+<strong>原题</strong>：<br />
+设 $ A = [alpha_1, alpha_2, alpha_3] $，已知 $ |alpha_1, alpha_2, alpha_3| = m <span class="arithmatex">\(，\)</span> |alpha_1 + beta, alpha_2, alpha_3| = n $，求 $ |alpha_1 + beta, alpha_2 + beta, alpha_3 + beta| $。<br />
+<strong>解</strong>：<br />
+$$
+|alpha_1 + beta, alpha_2 + beta, alpha_3 + beta| = m + n
+$$</p>
+<hr />
+<h4 id="例112"><strong>例1.12</strong><a class="headerlink" href="#例112" title="点击定位到锚点">#</a></h4>
+<p><strong>题型</strong>：余子式组合<br />
+<strong>方法</strong>：替换系数行计算<br />
+<strong>页码</strong>：Page 15<br />
+<strong>原题</strong>：<br />
+设行列式 $ D = begin{vmatrix} 2 &amp; -1 &amp; 2 &amp; 3 \ 3 &amp; 4 &amp; -1 &amp; 3 \ 1 &amp; 1 &amp; 1 &amp; 1 \ 1 &amp; -1 &amp; 2 &amp; 1 end{vmatrix} $，计算 $ A_{31} + A_{32} + A_{33} + A_{34} $。<br />
+<strong>解</strong>：<br />
+$$
+A_{31} + A_{32} + A_{33} + A_{34} = begin{vmatrix} 2 &amp; -1 &amp; 2 &amp; 3 \ 3 &amp; 4 &amp; -1 &amp; 3 \ 1 &amp; 1 &amp; 1 &amp; 1 \ 1 &amp; -1 &amp; 2 &amp; 1 end{vmatrix} text{（替换第3行为 } [1, 1, 1, 1] text{）} = 6
+$$</p>
+<hr />
+<h4 id="例113"><strong>例1.13</strong><a class="headerlink" href="#例113" title="点击定位到锚点">#</a></h4>
+<p><strong>题型</strong>：克拉默法则+反证法<br />
+<strong>方法</strong>：行列式为0 ⇔ 有非零解<br />
+<strong>页码</strong>：Page 16<br />
+<strong>原题</strong>：<br />
+已知3阶矩阵 $ B neq 0 $，且 $ B $ 的每一列向量都是齐次线性方程组：<br />
+$$
+begin{cases}
+x_1 + 2x_2 - 2x_3 = 0 \
+2x_1 - x_2 + lambda x_3 = 0 \
+3x_1 + x_2 - x_3 = 0
+end{cases}
+$$
+的解，证明 $ |B| = 0 $。<br />
+<strong>解</strong>：<br />
+1. <strong>求 <span class="arithmatex">\(\lambda\)</span></strong>：<br />
+   系数行列式 $ |A| = begin{vmatrix} 1 &amp; 2 &amp; -2 \ 2 &amp; -1 &amp; lambda \ 3 &amp; 1 &amp; -1 end{vmatrix} = 5(lambda - 1) $。<br />
+   由 $ |A| = 0 $，得 $ lambda = 1 $。<br />
+2. <strong>证明 $ |B| = 0 $</strong>：<br />
+   若 $ |B| neq 0 $，则 $ B $ 可逆，矛盾于 $ AB = 0 $，故 $ |B| = 0 $。  </p>
+<hr />
+<p>以上为8个核心例题的原题及关键解法总结。</p>
+<blockquote>
+<p><strong>学习建议</strong>：<br />
+1. 优先掌握性质3、4、7的搭配使用（80%计算依赖）；<br />
+2. 抽象题型重点训练矩阵乘法转化（例1.11）；<br />
+3. 几何意义辅助记忆性质6（成比例⇒体积为0）。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子统计，放在这里防止被 material navigation.instant 选项干掉，毕竟这个文件貌似会保持更新 -->
+
+
+                
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../calculus/first/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第一章">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第一章
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../PTMS/first/" class="md-footer__link md-footer__link--next" aria-label="下一页: 第一章">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第一章
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tooltips", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.action.edit", "content.action.view", "announce.dismiss", "navigation.tabs", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.top", "navigation.tracking", "search.share", "search.suggest", "search.highlight", "toc.follow"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
